@@ -14,3 +14,12 @@ phases:
     commands:
       - echo Running tests
       - npm test
+      - echo Building and tagging Docker image
+      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 121272337069.dkr.ecr.us-east-2.amazonaws.com
+      - docker build -t node-api .
+      - docker tag node-api:latest 121272337069.dkr.ecr.us-east-2.amazonaws.com/node-api:latest
+
+  post_build:
+    commands:
+      - echo Pushing to ECR
+      - docker push 121272337069.dkr.ecr.us-east-2.amazonaws.com/node-api:latest
