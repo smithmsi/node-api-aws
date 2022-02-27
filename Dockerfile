@@ -1,4 +1,4 @@
-ARG REPO=121272337069.dkr.ecr.us-east-2.amazonaws.com
+ARG REPO=024147066791.dkr.ecr.us-east-2.amazonaws.com
 FROM ${REPO}/node:12
 
 WORKDIR /usr/src/app
